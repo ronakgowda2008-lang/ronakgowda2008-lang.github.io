@@ -33,6 +33,14 @@ input,textarea{font:inherit;width:100%;padding:8px 10px;border-radius:8px;border
 textarea{font-family:ui-monospace,Menlo,monospace;font-size:.85rem;min-height:110px}
 label{display:block;font-size:.85rem;color:var(--mute)}
 .flag{color:var(--acc);font-size:.9rem;margin:2px 0}
+.nav{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+.nav a{text-decoration:none;border:1px solid var(--line);background:var(--card);border-radius:8px;padding:6px 12px;font-size:.9rem;color:var(--ink)}
+.nav a b{color:var(--acc)}
+.num{font-size:1.8rem;font-weight:700;color:var(--acc);line-height:1.1}
+ul.tl{margin:6px 0 0;padding-left:18px}
+.sb{width:100%;border-collapse:collapse;font-size:.95rem}
+.sb td{padding:8px 6px;border-top:1px solid var(--line)}
+.sb td:first-child{color:var(--acc);font-weight:700;white-space:nowrap;padding-right:14px}
 footer{color:var(--mute);font-size:.9rem;margin-top:40px}
 </style>
 </head>
@@ -42,7 +50,51 @@ footer{color:var(--mute);font-size:.9rem;margin-top:40px}
 <p class="tag">Rutgers Honors student in Business Analytics and Information Technology and Data Science, building at the line between data, finance and people.</p>
 <p>I like turning messy information into decisions. I have cleaned and analyzed real financial records, coached kids on a tennis court, and co-built an app that placed 2nd in a JPMorgan Chase competition. I am applying to Road to Silicon Valley because I want to learn how the best technology companies turn ideas into products at scale.</p>
 
-<h2>Projects</h2>
+<div class='card' style='margin-top:18px'><div class='meta'>MATCH SCORECARD</div><table class='sb'>
+<tr><td>Serve</td><td>Business Analytics, Information Technology and Data Science at Rutgers Honors</td></tr>
+<tr><td>Rally</td><td>Co-developer of Water for Wellness, 2nd place at JPMorgan Chase Generation Tech</td></tr>
+<tr><td>Volley</td><td>Internships in banking, finance, and operations</td></tr>
+<tr><td>Match point</td><td>Applying to Road to Silicon Valley</td></tr>
+</table></div>
+<div class='nav'><a href='#wfw'><b>Rally</b> Water for Wellness</a><a href='#numbers'><b>Score</b> My numbers</a><a href='#projects'><b>Match point</b> Projects</a><a href='#experience'><b>Game plan</b> Experience</a></div>
+
+<h2 id='wfw'>Featured: Water for Wellness</h2>
+<div class='card'>
+<h3>Water for Wellness: app and website</h3>
+<div class='meta'>JPMorgan Chase Generation Tech, 2022 to 2024, 2nd place</div>
+<p>Water for Wellness is an app and website that helps people in lower-income communities get access to clean water. I co-developed it with a team, and it placed 2nd in the competition. It is the project that showed me technology can solve problems for people who are often overlooked.</p>
+</div>
+<div class='card'>
+<h3>Case study: what I would explore next</h3>
+<div class='meta'>My ideas for extending the project, not claims about the original app</div>
+<ul class='tl'>
+<li>Show the nearest safe water source on a simple map.</li>
+<li>Let neighbors report a broken well or tap so problems get fixed sooner.</li>
+<li>Give local groups a dashboard showing where need is highest, so help goes there first.</li>
+</ul>
+<p class='meta' style='margin-top:8px'>Try the water cost estimator in the Projects section to see how needs scale with community size.</p>
+</div>
+
+<h2 id='numbers'>My life in numbers</h2>
+<div class='grid'>
+<div class='card'><div class='num'>2nd</div>place, JPMorgan Chase Generation Tech</div>
+<div class='card'><div class='num'>1,500</div>vendor records validated at the Port Authority</div>
+<div class='card'><div class='num'>190</div>tax classifications reviewed</div>
+<div class='card'><div class='num'>4.0</div>high school GPA</div>
+<div class='card'><div class='num'>12</div>AP courses</div>
+<div class='card'><div class='num'>5</div>on AP Computer Science A</div>
+</div>
+
+<h2>A week in my life</h2>
+<div class='card'><ul class='tl'>
+<li>Coaching kids and teens at Garden State Tennis Center</li>
+<li>Classes in the Rutgers Honors Program</li>
+<li>Leading as DECA Secretary and varsity tennis captain</li>
+<li>Leadership and career workshops with the Development School of Youth</li>
+<li>Building projects like the tools on this page</li>
+</ul></div>
+
+<h2 id='projects'>Projects</h2>
 <div class="card">
 <h3>Live tennis serve tracker (try it)</h3>
 <div class="meta">Built from my experience as a varsity tennis captain and coach. Log each service point and see the stats a coach actually cares about.</div>
@@ -84,7 +136,7 @@ Delta Corp, 44-12A4567</textarea>
 
 <div id='more'></div>
 
-<h2>Experience</h2>
+<h2 id='experience'>Experience</h2>
 <div class="card"><h3>Port Authority of NY and NJ, Intern</h3><div class="meta">Vendor data and accounts payable</div>
 <p>Validated about 1,500 vendor W-9 records against master data, reviewed about 190 tax classifications, analyzed payment reports for duplicates, supported 1099 reporting in SAP, and worked with technology staff to automate Excel processes.</p></div>
 <div class="card"><h3>SSB Bank, Finance and Business Strategy Intern</h3><div class="meta">2024 to 2025</div>
@@ -105,6 +157,24 @@ Delta Corp, 44-12A4567</textarea>
 
 <h2>Skills</h2>
 <span class="pill">Java</span><span class="pill">Python</span><span class="pill">Excel</span><span class="pill">SAP</span><span class="pill">Financial analysis</span><span class="pill">Market research</span><span class="pill">Public speaking</span><span class="pill">Leadership</span>
+
+<h2>How my tools work</h2>
+<div class='card'>
+<h3>Duplicate payment detector, step by step</h3>
+<div class='meta'>A simplified version of the kind of payment review I did at the Port Authority</div>
+<ol class='tl'>
+<li>Each line is read as vendor, invoice, and amount.</li>
+<li>A key is built from all three. If the key was already seen, it is an exact duplicate and its amount counts as money at risk.</li>
+<li>If only the vendor and amount match but the invoice differs, it is flagged as a possible duplicate for a person to review, because vendors can legitimately bill the same amount twice.</li>
+<li>The tool reports the counts and the total at risk.</li>
+</ol>
+<p class='meta' style='margin-top:8px'>Next improvements: upload a CSV file, add a date window, and show results in a sortable table.</p>
+</div>
+<div class='card'>
+<h3>Serve tracker and hold calculator</h3>
+<div class='meta'>Tennis analytics</div>
+<p>The tracker counts five outcomes per service point and turns them into first serve percentage, points won on each serve, and double fault rate. The hold calculator uses the share of serve points won to estimate the chance of winning a service game, assuming points are independent. Real matches have pressure and momentum, so a next step is to test that assumption with real match data.</p>
+</div>
 
 <footer>Contact: <a href="mailto:ronakgowda2008@gmail.com">ronakgowda2008@gmail.com</a></footer>
 </main>
