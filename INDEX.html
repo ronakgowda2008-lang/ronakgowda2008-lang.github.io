@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ronak Gowda | Business Analytics, Data and Finance</title>
+<style>
+:root{--bg:#fafaf7;--card:#fff;--ink:#1a1d23;--mute:#5b616e;--acc:#c8102e;--line:#e4e4de;--bar:#c8102e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14161a;--card:#1d2026;--ink:#f2f2ee;--mute:#a4aab6;--acc:#ff6b81;--line:#2c3038;--bar:#ff6b81}}
+:root[data-theme="dark"]{--bg:#14161a;--card:#1d2026;--ink:#f2f2ee;--mute:#a4aab6;--acc:#ff6b81;--line:#2c3038;--bar:#ff6b81}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+main{max-width:760px;margin:0 auto;padding:40px 20px 60px}
+h1{font-size:2.3rem;margin:0 0 4px;letter-spacing:-.5px}
+h2{font-size:1.15rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--acc);margin:44px 0 14px}
+.tag{color:var(--mute);font-size:1.1rem;margin:0 0 18px}
+a{color:var(--acc)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:12px}
+.card h3{margin:0 0 2px;font-size:1.02rem}
+.card .meta{color:var(--mute);font-size:.88rem;margin-bottom:6px}
+.card p{margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.btns{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:12px 0}
+button{font:inherit;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+button:hover{border-color:var(--acc)}
+button.reset{color:var(--mute)}
+.stat{margin:10px 0}
+.stat .row{display:flex;justify-content:space-between;font-size:.92rem}
+.track{height:10px;background:var(--line);border-radius:6px;overflow:hidden}
+.fill{height:100%;background:var(--bar);width:0;transition:width .3s}
+.pill{display:inline-block;padding:3px 10px;border:1px solid var(--line);border-radius:20px;font-size:.85rem;margin:0 6px 6px 0}
+input,textarea{font:inherit;width:100%;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+textarea{font-family:ui-monospace,Menlo,monospace;font-size:.85rem;min-height:110px}
+label{display:block;font-size:.85rem;color:var(--mute)}
+.flag{color:var(--acc);font-size:.9rem;margin:2px 0}
+footer{color:var(--mute);font-size:.9rem;margin-top:40px}
+</style>
+</head>
+<body>
+<main>
+<h1>Ronak Gowda</h1>
+<p class="tag">Rutgers Honors student in Business Analytics and Information Technology and Data Science, building at the line between data, finance and people.</p>
+<p>I like turning messy information into decisions. I have cleaned and analyzed real financial records, coached kids on a tennis court, and co-built an app that placed 2nd in a JPMorgan Chase competition. I am applying to Road to Silicon Valley because I want to learn how the best technology companies turn ideas into products at scale.</p>
+
+<h2>Projects</h2>
+<div class="card">
+<h3>Live tennis serve tracker (try it)</h3>
+<div class="meta">Built from my experience as a varsity tennis captain and coach. Log each service point and see the stats a coach actually cares about.</div>
+<div class="btns">
+<button data-k="f1w">1st serve in, won point</button>
+<button data-k="f1l">1st serve in, lost point</button>
+<button data-k="f2w">2nd serve in, won point</button>
+<button data-k="f2l">2nd serve in, lost point</button>
+<button data-k="df">Double fault</button>
+<button class="reset" id="reset">Reset</button>
+</div>
+<div id="out"></div>
+<p class="meta" id="insight" style="margin-top:10px"></p>
+</div>
+
+<div class="card">
+<h3>Compound growth calculator</h3>
+<div class="meta">A finance tool that shows how steady saving and returns build over time. Change the numbers and the chart updates.</div>
+<div class="grid">
+<div><label for="gp">Starting amount ($)</label><input id="gp" type="number" value="1000"></div>
+<div><label for="gm">Monthly addition ($)</label><input id="gm" type="number" value="200"></div>
+<div><label for="gr">Yearly return (%)</label><input id="gr" type="number" value="7"></div>
+<div><label for="gy">Years</label><input id="gy" type="number" value="20"></div>
+</div>
+<div id="gout" style="margin-top:12px"></div>
+</div>
+
+<div class="card">
+<h3>Vendor record validator</h3>
+<div class="meta">Inspired by my Port Authority work checking vendor tax records. Paste lines as name, EIN. It flags bad EIN formats and duplicates. The sample data below is made up.</div>
+<textarea id="vin">Acme Supply LLC, 12-3456789
+Bright Co, 98-7654321
+Acme Supply LLC, 12-3456789
+North Star Inc, 5555555
+Delta Corp, 44-12A4567</textarea>
+<div class="btns"><button id="vgo">Validate records</button></div>
+<div id="vout"></div>
+</div>
+
+<div id='more'></div>
+
+<h2>Experience</h2>
+<div class="card"><h3>Port Authority of NY and NJ, Intern</h3><div class="meta">Vendor data and accounts payable</div>
+<p>Validated about 1,500 vendor W-9 records against master data, reviewed about 190 tax classifications, analyzed payment reports for duplicates, supported 1099 reporting in SAP, and worked with technology staff to automate Excel processes.</p></div>
+<div class="card"><h3>SSB Bank, Finance and Business Strategy Intern</h3><div class="meta">2024 to 2025</div>
+<p>Worked on forecasting, budgeting and strategic analysis, with data-driven recommendations recognized by supervisors.</p></div>
+<div class="card"><h3>Kemp Oils, Business Development and Supply Chain Intern</h3><div class="meta">2023 to 2025</div>
+<p>Researched markets and competitors and supported supply chain optimization and customer programs.</p></div>
+<div class="card"><h3>Garden State Tennis Center, Tennis Coach</h3><div class="meta">2025 to present</div>
+<p>Coach kids and teens and communicate progress with parents.</p></div>
+
+<h2>Also</h2>
+<div class="card"><h3>Water for Wellness App, Co-developer</h3><div class="meta">JPMorgan Chase Generation Tech, 2nd place</div>
+<p>Worked on a team to design and build an app that addresses access to clean water.</p></div>
+<div class="grid">
+<div class="card"><h3>DECA</h3><div class="meta">Secretary</div></div>
+<div class="card"><h3>Varsity Tennis</h3><div class="meta">Team captain, MVP</div></div>
+<div class="card"><h3>Education</h3><div class="meta">Rutgers Honors, class of 2030. 4.0 GPA in high school, AP Scholar with Honor, AP Computer Science A score of 5</div></div>
+</div>
+
+<h2>Skills</h2>
+<span class="pill">Java</span><span class="pill">Python</span><span class="pill">Excel</span><span class="pill">SAP</span><span class="pill">Financial analysis</span><span class="pill">Market research</span><span class="pill">Public speaking</span><span class="pill">Leadership</span>
+
+<footer>Contact: <a href="mailto:ronakgowda2008@gmail.com">ronakgowda2008@gmail.com</a></footer>
+</main>
+<script>
+(function(){
+var c={f1w:0,f1l:0,f2w:0,f2l:0,df:0};
+var out=document.getElementById('out'),ins=document.getElementById('insight');
+function pct(a,b){return b?Math.round(a/b*100):0}
+function bar(l,v,sub){return '<div class="stat"><div class="row"><span>'+l+'</span><span>'+v+'%'+(sub?' ('+sub+')':'')+'</span></div><div class="track"><div class="fill" style="width:'+v+'%"></div></div></div>'}
+function draw(){
+var f1=c.f1w+c.f1l,f2=c.f2w+c.f2l,tot=f1+f2+c.df,first=f1;
+var s2=f2+c.df;
+var firstIn=pct(f1,tot),w1=pct(c.f1w,f1),w2=pct(c.f2w,f2),dfr=pct(c.df,s2);
+out.innerHTML=tot?(bar('First serve percentage',firstIn,f1+' of '+tot)+bar('Points won on 1st serve',w1,c.f1w+' of '+f1)+bar('Points won on 2nd serve',w2,c.f2w+' of '+f2)+bar('Double fault rate on 2nd serve',dfr,c.df+' of '+s2)):'<p class="meta">Tap a button after each service point.</p>';
+if(tot<10){ins.textContent=tot?'Log at least 10 points for a meaningful read.':''}
+else if(firstIn<55){ins.textContent='Takeaway: first serve percentage is low. Focus on placement and consistency before adding pace.'}
+else if(w2<w1-20){ins.textContent='Takeaway: the 2nd serve is giving up many more points. Work on spin and depth to stay in the rally.'}
+else{ins.textContent='Takeaway: serving looks balanced. Next step is to track which side and direction wins the most points.'}
+}
+document.querySelectorAll('button[data-k]').forEach(function(b){b.onclick=function(){c[b.dataset.k]++;draw()}});
+document.getElementById('reset').onclick=function(){for(var k in c)c[k]=0;draw()};
+draw();
+})();
+(function(){
+function g(i){return document.getElementById(i)}
+function f(n){return '$'+Math.round(n).toLocaleString('en-US')}
+function run(){
+var p=+g('gp').value||0,m=+g('gm').value||0,r=(+g('gr').value||0)/1200,y=Math.max(1,Math.min(60,Math.round(+g('gy').value||1)));
+var v=p,rows=[],i,j;
+for(i=0;i<y;i++){for(j=0;j<12;j++){v=v*(1+r)+m}rows.push(v)}
+var c=p+m*12*y,mx=Math.max.apply(null,rows)||1;
+var h='<p><strong>'+f(v)+'</strong> after '+y+' years. You put in '+f(c)+' and growth added '+f(v-c)+'.</p><div style="display:flex;align-items:flex-end;gap:2px;height:90px">';
+rows.forEach(function(x){h+='<div title="'+f(x)+'" style="flex:1;background:var(--bar);height:'+Math.max(2,x/mx*100)+'%"></div>'});
+g('gout').innerHTML=h+'</div>';
+}
+['gp','gm','gr','gy'].forEach(function(i){g(i).oninput=run});run();
+})();
+(function(){
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function go(){
+var lines=document.getElementById('vin').value.split('\n').map(function(s){return s.trim()}).filter(Boolean);
+var seen={},bad=[],dup=[],ok=0;
+lines.forEach(function(l,i){
+var k=l.lastIndexOf(','),name=k>-1?l.slice(0,k).trim():l,ein=k>-1?l.slice(k+1).trim():'';
+if(!/^\d{2}-\d{7}$/.test(ein)){bad.push('Line '+(i+1)+': '+esc(l)+' (EIN should look like 12-3456789)');return}
+if(seen[ein]){dup.push('Line '+(i+1)+': '+esc(name)+' repeats EIN '+ein+' from line '+seen[ein]);return}
+seen[ein]=i+1;ok++;
+});
+var h='<p><strong>'+lines.length+'</strong> records checked: '+ok+' clean, '+bad.length+' bad format, '+dup.length+' duplicate.</p>';
+bad.concat(dup).forEach(function(x){h+='<div class="flag">'+x+'</div>'});
+document.getElementById('vout').innerHTML=h;
+}
+document.getElementById('vgo').onclick=go;go();
+})();
+(function(){
+var M=document.getElementById('more');
+function $(n){return (n<0?'-':'')+'$'+Math.abs(Math.round(n)).toLocaleString('en-US')}
+function e(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function L(s){return s.split('\n').map(function(x){return x.trim()}).filter(Boolean)}
+function pc(x){return Math.round(x*1000)/10}
+function add(t,m,F,fn){
+var d=document.createElement('div');d.className='card';
+var h=`<h3>${t}</h3><div class='meta'>${m}</div><div class='grid'>`;
+F.forEach(function(x){var s=typeof x[1]=='string';h+=`<div${s?` style='grid-column:1/-1'`:''}><label>${x[0]}</label>${s?`<textarea>${e(x[1])}</textarea>`:`<input type='number' step='any' value='${x[1]}'>`}</div>`});
+h+=`</div><div class='o' style='margin-top:10px'></div>`;
+d.innerHTML=h;M.appendChild(d);
+var els=d.querySelectorAll('input,textarea'),o=d.querySelector('.o');
+function run(){var v=[].map.call(els,function(x){return x.tagName=='TEXTAREA'?x.value:(+x.value||0)});try{o.innerHTML=fn(v)}catch(z){o.innerHTML=`<p class='flag'>Check your inputs.</p>`}}
+[].forEach.call(els,function(x){x.oninput=run});run();}
+
+add('Service game hold calculator','Estimates how often a player holds serve from the share of serve points won, assuming each point is independent.',[['Serve points won (%)',65]],function(v){var G=function(p){var q=1-p;return Math.pow(p,4)*(1+4*q+10*q*q)+20*Math.pow(p,3)*Math.pow(q,3)*p*p/(p*p+q*q)};var p=Math.min(.95,Math.max(.05,v[0]/100));return `<p>Winning <strong>${v[0]}%</strong> of serve points means holding about <strong>${pc(G(p))}%</strong> of service games. Winning 5 more points per 100 raises that to ${pc(G(Math.min(.99,p+.05)))}%.</p>`});
+
+add('Coaching income planner','Models earnings from lessons, based on my work as a tennis coach. Numbers are editable assumptions.',[['Lessons per week',12],['Rate per lesson ($)',60],['Weeks per year',44],['Court cost per lesson ($)',10]],function(v){return `<p>Gross <strong>${$(v[0]*v[1]*v[2])}</strong> per year. After court costs: <strong>${$(v[0]*(v[1]-v[3])*v[2])}</strong>, or ${$(v[0]*(v[1]-v[3])*v[2]/12)} per month.</p>`});
+
+add('Break-even analyzer','The kind of calculation used in business competitions: how many units cover the fixed costs.',[['Fixed costs ($)',2000],['Price per unit ($)',25],['Cost per unit ($)',10]],function(v){var cm=v[1]-v[2];if(cm<=0)return `<p class='flag'>Price must be higher than cost per unit.</p>`;var u=Math.ceil(v[0]/cm);return `<p>Break even at <strong>${u.toLocaleString('en-US')} units</strong> (${$(u*v[1])} in sales). Each unit contributes ${$(cm)}, a ${pc(cm/v[1])}% margin.</p>`});
+
+add('Loan payment calculator','A banking tool: monthly payment and total interest on a fixed-rate loan.',[['Loan amount ($)',20000],['APR (%)',6.5],['Years',5]],function(v){var n=v[2]*12,r=v[1]/1200,pay=r?v[0]*r/(1-Math.pow(1+r,-n)):v[0]/n;return `<p>Monthly payment <strong>$${pay.toFixed(2)}</strong>. Total paid ${$(pay*n)}, of which ${$(pay*n-v[0])} is interest.</p>`});
+
+add('Budget variance analyzer','Compares budget to actual spending and flags lines more than 10% over, like the budgeting work I did in banking. Format: category, budget, actual.',[['Lines',`Marketing, 5000, 5600\nSupplies, 3000, 2700\nTravel, 2000, 2900\nSoftware, 1200, 1150`]],function(v){var tb=0,ta=0,h='';L(v[0]).forEach(function(l){var s=l.split(','),b=+s[1],a=+s[2];if(isNaN(b)||isNaN(a))return;tb+=b;ta+=a;var d=a-b,p=b?d/b*100:0;h+=`<div class='${p>10?'flag':''}'>${e(s[0])}: ${$(d)} (${Math.round(p)}%)${p>10?' over budget':''}</div>`});return `<p>Budget ${$(tb)}, actual ${$(ta)}, variance <strong>${$(ta-tb)}</strong>.</p>`+h});
+
+add('Order quantity optimizer','A supply chain model (economic order quantity) for how much to order at a time and when to reorder.',[['Yearly demand (units)',12000],['Cost per order ($)',80],['Holding cost per unit per year ($)',2.5],['Supplier lead time (days)',7]],function(v){if(v[2]<=0)return '';var q=Math.sqrt(2*v[0]*v[1]/v[2]);return `<p>Order about <strong>${Math.round(q).toLocaleString('en-US')} units</strong> at a time, ${(v[0]/q).toFixed(1)} orders per year. Reorder when stock falls to ${Math.round(v[0]/365*v[3]).toLocaleString('en-US')} units.</p>`});
+
+add('Market size estimator','Market research framework: total market, the part you can serve, and the part you can realistically win.',[['Potential customers',50000],['Yearly price per customer ($)',120],['Serviceable share (%)',30],['Obtainable share (%)',5]],function(v){var t=v[0]*v[1],s=t*v[2]/100,o=s*v[3]/100;return `<p>Total market <strong>${$(t)}</strong>. Serviceable ${$(s)}. Realistic first target <strong>${$(o)}</strong> per year.</p>`});
+
+add('Duplicate payment detector','Based on my Port Authority work reviewing payment reports. Format: vendor, invoice, amount. Sample data is made up.',[['Payments',`Acme Supply, INV-101, 1250\nBright Co, INV-220, 800\nAcme Supply, INV-101, 1250\nDelta Corp, INV-330, 450\nDelta Corp, INV-331, 450`]],function(v){var se={},sa={},ex=[],po=[],risk=0;L(v[0]).forEach(function(l,i){var s=l.split(',').map(function(x){return x.trim()}),a=+s[2],ke=s[0]+'|'+s[1]+'|'+a,ka=s[0]+'|'+a;if(se[ke]){ex.push(`Line ${i+1}: ${e(s[0])} ${e(s[1])} repeats line ${se[ke]}`);risk+=a}else{if(sa[ka])po.push(`Line ${i+1}: ${e(s[0])} paid ${$(a)} again on a different invoice (${e(s[1])}), worth a review`);se[ke]=i+1;if(!sa[ka])sa[ka]=i+1}});var h=`<p><strong>${ex.length}</strong> exact duplicate(s), ${$(risk)} at risk. ${po.length} possible.</p>`;return h+ex.concat(po).map(function(x){return `<div class='flag'>${x}</div>`}).join('')});
+
+add('Water access cost estimator','Inspired by Water for Wellness: how much water a community needs and what supplying it costs. Assumptions are editable.',[['People served',500],['Liters per person per day',20],['Cost per 1,000 liters ($)',2]],function(v){var d=v[0]*v[1];return `<p>The community needs <strong>${d.toLocaleString('en-US')} liters</strong> per day. Supplying it costs about ${$(d*30/1000*v[2])} per month and ${$(d*365/1000*v[2])} per year.</p>`});
+
+add('Event run-of-show builder','Event planning, like organizing performances for Satrangi. Enter acts as name, minutes, and get a timed schedule.',[['Start hour (0 to 23)',18],['Start minute',0],['Minutes between acts',3],['Acts',`Welcome, 5\nGroup dance, 8\nSolo performance, 6\nFinale, 10`]],function(v){var t=v[0]*60+v[1],h='',f=function(x){x=x%1440;return String(Math.floor(x/60)).padStart(2,'0')+':'+String(x%60).padStart(2,'0')};L(v[3]).forEach(function(l){var s=l.split(','),m=+s[1]||0;h+=`<div>${f(t)}  ${e(s[0])} (${m} min)</div>`;t+=m+v[2]});return h+`<p><strong>Ends at ${f(t-v[2])}</strong></p>`});
+})();
+</script>
+</body>
+</html>
